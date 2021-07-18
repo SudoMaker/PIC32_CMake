@@ -1,0 +1,63 @@
+if (NOT PIC32_TOOLCHAIN_SEARCH_PATH)
+    message(FATAL_ERROR "-- FindPIC32Toolchain: Variable PIC32_TOOLCHAIN_SEARCH_PATH isn't defined")
+else()
+    message("-- FindPIC32Toolchain: Search path: ${PIC32_TOOLCHAIN_SEARCH_PATH}")
+endif()
+
+set(CMAKE_C_LINK_FLAGS "")
+
+file(GLOB_RECURSE PIC32_TOOLCHAIN_C_COMPILER ${PIC32_TOOLCHAIN_SEARCH_PATH}/mipsel-elf-gcc)
+if (PIC32_TOOLCHAIN_C_COMPILER)
+    message("-- FindPIC32Toolchain: Found mipsel-elf-gcc at ${PIC32_TOOLCHAIN_C_COMPILER}")
+    set(CMAKE_C_COMPILER    ${PIC32_TOOLCHAIN_C_COMPILER})
+    set(CMAKE_ASM_COMPILER  ${PIC32_TOOLCHAIN_C_COMPILER})
+endif()
+
+file(GLOB_RECURSE PIC32_TOOLCHAIN_CXX_COMPILER ${PIC32_TOOLCHAIN_SEARCH_PATH}/mipsel-elf-g++)
+if (PIC32_TOOLCHAIN_CXX_COMPILER)
+    message("-- FindPIC32Toolchain: Found mipsel-elf-g++ at ${PIC32_TOOLCHAIN_CXX_COMPILER}")
+    set(CMAKE_CXX_COMPILER ${PIC32_TOOLCHAIN_CXX_COMPILER})
+else()
+    message("-- FindPIC32Toolchain: mipsel-elf-g++ not found, C++ support disabled")
+endif()
+
+file(GLOB_RECURSE PIC32_TOOLCHAIN_AR ${PIC32_TOOLCHAIN_SEARCH_PATH}/mipsel-elf-ar)
+if (PIC32_TOOLCHAIN_AR)
+    message("-- FindPIC32Toolchain: Found mipsel-elf-ar at ${PIC32_TOOLCHAIN_AR}")
+    set(CMAKE_AR ${PIC32_TOOLCHAIN_AR})
+endif()
+
+file(GLOB_RECURSE PIC32_TOOLCHAIN_NM ${PIC32_TOOLCHAIN_SEARCH_PATH}/mipsel-elf-nm)
+if (PIC32_TOOLCHAIN_NM)
+    message("-- FindPIC32Toolchain: Found mipsel-elf-nm at ${PIC32_TOOLCHAIN_NM}")
+    set(CMAKE_NM ${PIC32_TOOLCHAIN_NM})
+endif()
+
+file(GLOB_RECURSE PIC32_TOOLCHAIN_RANLIB ${PIC32_TOOLCHAIN_SEARCH_PATH}/mipsel-elf-ranlib)
+if (PIC32_TOOLCHAIN_RANLIB)
+    message("-- FindPIC32Toolchain: Found mipsel-elf-ranlib at ${PIC32_TOOLCHAIN_RANLIB}")
+    set(CMAKE_RANLIB ${PIC32_TOOLCHAIN_RANLIB})
+endif()
+
+file(GLOB_RECURSE PIC32_TOOLCHAIN_OBJCOPY ${PIC32_TOOLCHAIN_SEARCH_PATH}/mipsel-elf-objcopy)
+if (PIC32_TOOLCHAIN_OBJCOPY)
+    message("-- FindPIC32Toolchain: Found mipsel-elf-objcopy at ${PIC32_TOOLCHAIN_OBJCOPY}")
+    set(CMAKE_OBJCOPY ${PIC32_TOOLCHAIN_OBJCOPY})
+endif()
+
+file(GLOB_RECURSE PIC32_TOOLCHAIN_OBJDUMP ${PIC32_TOOLCHAIN_SEARCH_PATH}/mipsel-elf-objdump)
+if (PIC32_TOOLCHAIN_OBJDUMP)
+    message("-- FindPIC32Toolchain: Found mipsel-elf-objdump at ${PIC32_TOOLCHAIN_OBJDUMP}")
+    set(CMAKE_OBJDUMP ${PIC32_TOOLCHAIN_OBJDUMP})
+endif()
+
+file(GLOB_RECURSE PIC32_TOOLCHAIN_SIZE ${PIC32_TOOLCHAIN_SEARCH_PATH}/mipsel-elf-size)
+if (PIC32_TOOLCHAIN_SIZE)
+    message("-- FindPIC32Toolchain: Found mipsel-elf-size at ${PIC32_TOOLCHAIN_SIZE}")
+endif()
+
+file(GLOB_RECURSE PIC32_TOOLCHAIN_BIN2HEX ${PIC32_TOOLCHAIN_SEARCH_PATH}/pic32m-bin2hex)
+if (PIC32_TOOLCHAIN_BIN2HEX)
+    message("-- FindPIC32Toolchain: Found pic32m-bin2hex at ${PIC32_TOOLCHAIN_BIN2HEX}")
+endif()
+
